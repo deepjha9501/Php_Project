@@ -39,3 +39,49 @@ Getting Started with App-V (Windows 10/11) - Microsoft Desktop Optimization Pack
 
 
 https://gitlab.rpsconsulting.in/
+
+
+# Path to your MSI file
+$msiFile = "C:\Users\aztra\Downloads\7z2501-x64.msi"
+
+# Create Windows Installer COM object
+$installer = New-Object -ComObject WindowsInstaller.Installer
+
+# Open the MSI file database in read-only mode
+$database = $installer.GetType().InvokeMember(
+    "OpenDatabase", 
+    'InvokeMethod', 
+    $null, 
+    $installer, 
+    @($msiFile, 0) # 0 for read-only
+)
+
+# Prepare a query to get the ProductCode property
+$query = "SELECT `Value` FROM `Property` WHERE `Property` = 'ProductCode'"
+
+# Execute the query
+$view = $database.GetType().InvokeMember(
+    "OpenView",
+    'InvokeMethod',
+    $null,
+    $database,
+    ($query)
+)
+
+$view.GetType().InvokeMember("Execute", 'InvokeMethod', $null, $view, $null)
+
+# Fetch the record
+$record = $view.GetType().InvokeMember("Fetch", 'InvokeMethod', $null, $view, $null)
+
+# The product code is in the first field of the record
+$productCode = $record.GetType().InvokeMember("StringData", 'GetProperty', $null, $record, 1)
+Write-Output "ProductCode of MSI: $productCode"
+
+
+
+
+
+Install-WindowsFeature -Name Web-Server, Web-WebServer, Web-Common-Http, Web-Static-Content, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-App-Dev, Web-Asp-Net, Web-Net-Ext, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Includes, Web-Security, Web-Filtering, Web-Basic-Auth, Web-Windows-Auth, Web-Performance, Web-Stat-Compression, Web-Mgmt-Tools, Web-Mgmt-Console, NET-Framework-Features, NET-Framework-Core, NET-Framework-45-Features, NET-WCF-Services45, NET-WCF-TCP-PortSharing45 -IncludeManagementTools
+
+
+
