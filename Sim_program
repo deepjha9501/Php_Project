@@ -115,3 +115,12 @@ SELECT TOP (1000)
 FROM [CM_HYD].[dbo].[v_R_System]
 
 
+
+Import-Module ConfigurationManager
+
+$cmdlets = Get-Command -Module ConfigurationManager
+$cmdlets | Select-Object Name, CommandType, ModuleName, Version |
+    Export-Csv -Path "C:\Cmdlets.csv" -NoTypeInformation
+
+
+
