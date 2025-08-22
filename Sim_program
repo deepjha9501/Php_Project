@@ -94,3 +94,24 @@ https://notepad-plus-plus.org/downloads/
 
 
 
+SELECT TOP (1000) 
+       [ResourceID]
+      ,[ResourceType]
+      ,[ResourceID]
+      ,[ResourceType]
+      ,[ADDomain0]
+      ,[ADSiteName0]
+      ,[AgentName]
+      ,[AMTFullVersion]
+      ,[AMTStatus]
+      ,[BuildExt]
+      ,[BuildExt]
+      ,[ClientType]
+      ,[ClientVersion]
+      ,[ClientType]
+      ,[Client_Version0]
+      ,[ClientType]
+      ,[Client_Version0]
+FROM [CM_HYD].[dbo].[v_R_System]
+
+
