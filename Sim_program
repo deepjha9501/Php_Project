@@ -124,3 +124,7 @@ $cmdlets | Select-Object Name, CommandType, ModuleName, Version |
 
 
 
+## Add Registry Key for FileZilla DeferHistory
+Set-RegistryKey -Key "HKLM\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Name "DeferTimesRemaining" -Value 1 -Type DWord
+
+
