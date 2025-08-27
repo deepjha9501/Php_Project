@@ -132,3 +132,16 @@ Set-RegistryKey -Key "HKLM\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaPro
 New-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Name "DeferTimesRemaining" -Value 1 -PropertyType DWord -Force
 
+
+
+# नया key बनाओ
+New-Item -Path "HKLM:\SOFTWARE\FileZillaBackup" -Force
+
+# पुराना key copy करो
+Copy-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" `
+          -Destination "HKLM:\SOFTWARE\FileZillaBackup" -Recurse -Force
+
+# पुराना key delete कर दो
+Remove-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Recurse -Force
+
+
