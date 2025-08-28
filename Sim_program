@@ -142,6 +142,9 @@ Copy-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject
           -Destination "HKLM:\SOFTWARE\FileZillaBackup" -Recurse -Force
 
 # पुराना key delete कर दो
+
+
+Introduction to Microsoft Entra Connect V2 - Microsoft Entra ID | Microsoft Learn
 Remove-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Recurse -Force
 
 
