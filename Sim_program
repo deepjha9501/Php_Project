@@ -148,3 +148,18 @@ Introduction to Microsoft Entra Connect V2 - Microsoft Entra ID | Microsoft Lear
 Remove-Item -Path "HKLM:\SOFTWARE\PSAppDeployToolkit\DeferHistory\FileZillaProject_FileZilla_3.69.3_x64_EN_01" -Recurse -Force
 
 
+New-SelfSignedCertificate `
+
+  -Subject "CN=Mozilla" `
+
+  -CertStoreLocation "Cert:\CurrentUser\My" `
+
+  -KeyUsage DigitalSignature, KeyEncipherment `
+
+  -Type Custom `
+
+  -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3,1.3.6.1.5.5.7.3.2,1.3.6.1.5.5.7.3.1") `
+
+  -FriendlyName "Mozilla App Signing Certificate"
+
+
